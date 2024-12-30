@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<div class="row bg-dark p-4"><!--2nd row-->
+    <div class="col-md-2 bg-dark"><!--filter section start -->
+        <a href="/paid" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+          <h5 style="text-align: center;">Paid</h5>
+        </div><br></a><br>
+        <a href="/unpaid" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+            <h5 style="text-align: center;">Unpaid</h5>
+          </div><br></a><br>
+        <a href="/latest" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+            <h5 style="text-align: center;">Latest</h5>
+          </div><br></a><br>
+        <a href="trending.html" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+            <h5 style="text-align: center;">Trending</h5>
+          </div><br></a><br>
+        <a href="/subscribe" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+            <h5 style="text-align: center;">Subscribe</h5>
+          </div><br></a><br>
+        <a href="/watchlist" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+            <h5 style="text-align: center;">Watchlist</h5>
+          </div><br></a><br>
+        <a href="/viewhistory" style="color: aliceblue;">
+          <div class="card bg-dark hov">
+            <h5 style="text-align: center;">History</h5>
+          </div><br></a><br>
+    </div><!--filter end-->  
+    <div class="col-md-9"><!--movie list start-->
+
+        <div class="row row-cols-1 row-cols-md-12 P-4">
+          {% if success %}
+          <div class="alert alert-success" role="alert">
+            {{success}}
+          </div>
+            {% endif %}
+        {% if ermsg %}
+          <div class="alert alert-danger" role="alert">
+        {{ermsg}}
+          </div>
+        {% endif %}
+              <div class="row row-cols-1 row-cols-md-3 g-4">
+              {% for i in data %}
+                <div class="col">
+                  <div class="card h-100 hov1 bg-dark">
+                    <small style="margin-left: 35%;color: azure;">{{i.fid.name}}</small>
+                    <img src="{{i.fid.image.url}}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">
+                        <a class="btn btn-outline-primary" href="/history/{{i.id}}">Watch now</a>
+                        <a class="btn btn-outline-success" href="/addtowatchlist/{{i.id}}">add to watchlist</a>
+                        <a href="/info/{{i.id}}" class="btn btn-outline-info">Info</a>
+                      </h5>
+                      <small class="text-muted">Duration -{{i.time}} min</small>
+                    </div>
+                  </div>
+                </div><!--/1-->
+              {% endfor %}
+            </div> 
+    </div><!--movie list end-->
+</div><!--2nd row end-->
+
+<div class="row bg-dark" style="align-items: center; padding-left: 45%;"><!--3rd row/footer start-->
+  <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item" style="padding: 2%;">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li class="page-item" style="padding: 2%;"><a class="page-link" href="#">1</a></li>
+        <li class="page-item" style="padding: 2%;"><a class="page-link" href="#">2</a></li>
+        <li class="page-item" style="padding: 2%;"><a class="page-link" href="#">3</a></li>
+        <li class="page-item" style="padding: 2%;">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+</div><!--footer end-->
+
+{% endblock 'main' %}

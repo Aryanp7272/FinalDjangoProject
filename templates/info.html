@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+<div class="row row-cols-1 row-cols-md-12 P-4 bg-dark">
+  {% if success %}
+  <div class="alert alert-success" role="alert">
+    {{success}}
+  </div>
+    {% endif %}
+{% if ermsg %}
+  <div class="alert alert-danger" role="alert">
+{{ermsg}}
+  </div>
+{% endif %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for i in data %}
+      <div class="col" >
+        <div>
+            <div style="height: 50%;width: 40%;margin-left: 10%;">
+                <img src="{{i.image.url}}" alt="image not found">
+            </div>
+        </div>
+      </div>
+      <div class="col" style="color: azure;">
+        <div style="margin-left: 35%;">
+            Description
+        </div><hr><br>
+        <li>Film Name - {{i.name}}</li>
+        <li>Duration - {{i.time}} min</li>
+        <li>Language - {{i.language}}</li>
+        <li>Type - {{i.type}}</li>
+        <li>Country - {{i.country}}</li>
+        {% if i.is_paid == 1 %}
+        <li>Paid</li>
+        <li>Rs :{{i.price}}</li>
+        {% else %}
+        <li>Not Paid</li>
+        {% endif %}
+
+      </div>
+      <div style="margin-top:10% ;">
+        <h5 class="card-title">
+            <a class="btn btn-outline-primary" href="/history/{{i.id}}">Watch now</a><br><br>
+            <a class="btn btn-outline-success" href="/addtowatchlist/{{i.id}}">add to watchlist</a><br><br>
+            <a class="btn btn-outline-danger" href="/watchlist">View Watchlist</a><br><br>
+          </h5>
+      </div>
+
+    
+    {% endfor %}
+  </div> 
+</div><!--movie list end-->
+</div><!--2nd row end--> 
+
+{% endblock 'main' %}

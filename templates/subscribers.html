@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<div class="row">
+    {% for i in data %}
+    <div class="card mb-4 bg-dark" style="margin-left:5%;width: 15%;height: 25%;color: azure;margin-top: 3%;"><!--1-->
+            <div class="card-body">
+              <h2 class="card-title">{{i.pid.name}}</h2><br>
+              <h5 class="card-title">
+                Expire : {{ i.end_date|date:"F d, Y" }}<br><br>
+               Rs. {{i.pid.charges}}<br><br>
+              </h5>
+            </div>
+    </div> <!--/1--> 
+    {% endfor %}
+
+</div>
+{% endblock 'main' %}

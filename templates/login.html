@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+<div class="container" style="width:40%;height: 20%;margin-top: 5%;border-radius: 2%;background: transparent;">
+  {% if ermsg%}
+      <div class="alert alert-danger" role="alert">
+        {{ermsg}}
+      </div>
+      {% endif %}
+    <form method="post" >
+        {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label" style="color:black;">Username</label>
+        <input placeholder="Enter e-mail address or username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" style="color:black;">Password</label>
+        <input placeholder="Enter password" type="password" class="form-control" id="exampleInputPassword1" name="password">
+      </div>  
+      <button type="submit" class="btn btn-success" style="color: black;margin: 3%;" >Login</button> new user ? <a href="/register">Register</a>
+    </form>
+</div>
+
+{% endblock 'main' %}

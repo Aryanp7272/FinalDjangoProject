@@ -1,0 +1,181 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Film Site</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="{% static 'CSS/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{%  static 'CSS\style.css' %}">
+    <style>
+      a{
+        text-decoration: none;
+      }
+      img{
+        height: 400px;
+      }
+      .circular-button {
+    width: 70px; /* Adjust the size of the button */
+    height: 70px; /* Adjust the size of the button */
+    border-radius: 50%; /* This will make the button circular */
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove default button border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    outline: none; /* Remove outline on focus */
+}
+
+.circular-button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+}
+.hov:hover{
+  transform: scale(1.2);
+  transition-duration: 0.3s;
+}
+.hov1:hover{
+  transform: scale(1.05);
+  transition-duration: 0.3s;
+}
+.hov3 {
+    border-color: transparent; /* Set transparent border color on hover */
+    animation: rainbow 3s linear infinite; /* Apply rainbow border animation on hover */
+}
+@keyframes rainbow {
+    0% {
+        border-color: violet;
+    }
+    14% {
+        border-color: indigo;
+    }
+    28% {
+        border-color: blue;
+    }
+    42% {
+        border-color: green;
+    }
+    56% {
+        border-color: yellow;
+    }
+    70% {
+        border-color: orange;
+    }
+    84% {
+        border-color: red;
+    }
+    100% {
+        border-color: violet;
+    }
+}
+.profile-button {
+  display: inline-block;
+  width: 50px; /* Adjust the size as needed */
+  height: 50px; /* Adjust the size as needed */
+  border-radius: 50%;
+  overflow: hidden;
+  padding: 0;
+  border: 2px solid #fff; /* Optional: border around the profile picture */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Optional: add shadow for better visibility */
+}
+
+.profile-button .profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff; /* Optional: focus state for accessibility */
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="row" style="position:static;"><!--1st row /nav bar start-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <a class="navbar-brand" href="/home"><img class="" src="{% static 'Images\logo.png' %}" alt="logo" style="height: 80px;border-radius: 5%;width: 100px;border: 5px solid transparent;transition:border-color 0.5s ease ;"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/home">Home</a>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Type
+                      </a>
+                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="/catfilter/1">Movie</a></li><hr>
+                        <li><a class="dropdown-item" href="/catfilter/2">Web Series</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/catfilter/3">Drama</a></li>
+                      </ul>
+                    </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Country
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/catfilter/4">India</a></li><hr>
+                      <li><a class="dropdown-item" href="/catfilter/5">America</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/catfilter/6">Korea</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Language
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" href="/catfilter/7">English</a></li><hr>
+                      <li><a class="dropdown-item" href="/catfilter/8">Hindi</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="/catfilter/9">Chinese</a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/about" tabindex="-1" aria-disabled="true">About</a>
+                  </li>
+                  {% if user.is_authenticated %}
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/subscribtions" tabindex="-1" aria-disabled="true">Subscriptions</a>
+                  </li>
+                  <li class="nav-item">
+                    <!-- <a class="nav-link active profile-button" href="/subscribtions" tabindex="-1" aria-disabled="true">
+                      <img src="https://www.iprcenter.gov/image-repository/blank-profile-picture.png/image_view_fullscreen" alt="Profile" class="profile-image">
+                    </a> -->
+                    <!-- <a href="" style="color: white;">{% now "Y-m-d "%}</a> -->
+                    <li class="nav-item">
+                      <!-- <a href="#" class="nav-link active" style="color: rgb(35, 117, 240);">Welcome, {{ user.username }}</a> -->
+                      <!-- <a href="#" class="nav-link active" style="color: rgb(35, 117, 240);">"{{ i.end_date|date:"F d, Y" }}"</a> -->
+                    </li>
+                    
+
+                  </li>
+                  
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link active" href="/register" tabindex="-1" aria-disabled="true">Register</a>
+                  </li>
+                  {% endif %}
+                </ul>
+                <form class="d-flex" action="/search">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                {% if user.is_authenticated %}
+                <button class="circular-button" type="submit"  style="margin-left: 4%;"><a href="/logout " style="color: azure;" >Logout</a></button>
+                {% else %}
+                <button class="circular-button" type="submit"  style="margin-left: 4%;"><a href="/ulogin " style="color: azure;" >Login</a></button>
+                {% endif %}
+              </div>
+            </div>
+          </nav>
+    </div>          
+   <!--1st row end-->

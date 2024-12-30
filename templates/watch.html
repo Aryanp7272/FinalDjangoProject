@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+
+<button>X</button>
+
+<div style="margin-top: 2%;margin-left:15%;width: 130%;height: 70%;">
+    
+    {% if ermsg %}
+    <div class="alert alert-danger" role="alert">
+    {{ermsg}}
+    </div>
+    {% endif %}
+    <video width='50%' controls>
+        <source src='{{ MEDIA_URL }}{{data.video.url}}' type='video/mp4'>
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+
+{% endblock 'main' %}

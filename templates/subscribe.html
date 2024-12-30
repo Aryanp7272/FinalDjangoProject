@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+<div class="row">
+    {% for i in data %}
+    <div class="card mb-4 bg-dark" style="margin-left:5%;width: 15%;height: 25%;color: azure;margin-top: 3%;"><!--1-->
+            <div class="card-body">
+              <h2 class="card-title">{{i.name}}</h2><br>
+              <h5 class="card-title">
+                {{i.duration}}<br><br>
+               Rs. {{i.charges}}<br><br>
+              </h5>
+              <a href="/buy/{{i.id}}" class="btn btn-outline-info" type="submit">Buy</a>
+            </div>
+    </div> <!--/1--> 
+    {% endfor %}
+
+</div>
+{% endblock 'main' %}

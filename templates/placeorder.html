@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+
+
+<div class="row col-md-11 mx-auto ">  <!--row 2nd  section start-->
+    <div class="col-md-9 bg-dark" style="margin-top: 3%;">
+        {% for i in user %}
+        {% if forloop.counter == 1 %}
+      <div class="mt-2 p3 shadow" style="color: azure; align-self: center;"><!--customer detail-->
+        <h5>Customer detail</h5><br><br>
+        <p><strong>Customer name:</strong> {{i.username}}</p>
+        <p><strong>Customer Email:</strong> {{i.email}}</p><br><br>
+      </div><!--customer detail end-->
+      {% endif %}
+      {% endfor %}
+      <div class="mt-2 btn-danger">
+        <div style="margin-left: 40%;">
+            <h3>Summary</h3>
+        </div>
+        
+      </div>
+      <div class="mt-2 p-3 shadow " style="color: azure;"><!--product detail-->
+        {% for i in data %}
+        <div class="row mt-2">
+          <div class="col-md-5">
+              <p> <strong>Plan Name:</strong> {{i.name}} </p>
+              <p> <strong>Duration: </strong> {{i.duration}}</p>
+              <p> <strong>Charges:</strong> {{i.charges}}</p>
+          </div>
+      </div>
+      {% endfor %}
+      </div><!--product detail end -->
+    </div>
+    {% for i in data %}
+    <div class="col-md-3" style="margin-top: 3%;"><!--price detail-->
+      <p><strong>Total amount:</strong>Rs.{{i.charges}}</p> 
+      <p><a href="/makepayment/{{i.name}}"><button  type="submit" class="btn btn-primary">Make Payment</button></a></p>
+    </div><!--price detail end-->
+    {% endfor %}
+</div><!--row 2nd section end-->
+
+{% endblock 'main' %}
